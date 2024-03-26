@@ -1,10 +1,13 @@
-
+import Vitereact from "./Vitereact"
 
 function App() {
 
 
   return (
-  <h1>Hello ViteReactJs</h1>
+<>
+<Vitereact/>
+<h1>Hello ViteReactJs</h1>
+</>
   )
 }
 
