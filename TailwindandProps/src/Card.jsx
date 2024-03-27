@@ -1,7 +1,15 @@
 
 
-const Card = (props)=>{
-    console.log("props",props);
+const Card = ({username,btnText})=>{
+    // console.log("props",props);
+    // console.log(props.userName);
+    // console.log(props.age);
+    // console.log(username);
+    console.log(btnText);
+
+  
+  
+
 return(
     <div className="relative h-[400px] w-[300px] rounded-md flex">
       <img
@@ -11,12 +19,12 @@ return(
       />
       <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
       <div className="absolute bottom-4 left-4 text-left">
-        <h1 className="text-lg font-semibold text-white">Delba</h1>
+        <h1 className="text-lg font-semibold text-white">{username}</h1>
         <p className="mt-2 text-sm text-gray-300">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, debitis?
         </p>
         <button className="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white">
-          View Profile &rarr;
+          {btnText} &rarr;
         </button>
       </div>
     </div>
