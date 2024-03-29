@@ -5,7 +5,7 @@ const Card = ({username,btnText})=>{
     // console.log(props.userName);
     // console.log(props.age);
     // console.log(username);
-    console.log(btnText);
+    // console.log(btnText);
 
   
   
