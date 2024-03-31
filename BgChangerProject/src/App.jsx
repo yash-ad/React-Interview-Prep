@@ -58,7 +58,7 @@ style={{backgroundColor:color}}
 >
 <button className="rounded-full px-4 py-1 outline-none text-white"
 // Using onClick event handler, whenever the user clicks on a button or an any element within the application the onClick event calls a function and the called function triggers an action.
-// A;ways remember
+// Always remember onClick event handler always acceptsa function or functions reference we can't directly call the function init.
 onClick={()=> setColor("Red")}
 style={{backgroundColor:"Red"}}>Red</button>
 <button className="rounded-full px-4 py-1 outline-none text-white"

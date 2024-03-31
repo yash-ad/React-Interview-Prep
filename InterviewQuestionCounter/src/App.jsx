@@ -28,7 +28,6 @@ setCount(prevCount => prevCount + 1);
     <h1>Counter Interview Question</h1>
     <h2>counter: {count}</h2>
 <button onClick={incrementValue}>Add Value</button>
-
     </>
   )
 }
