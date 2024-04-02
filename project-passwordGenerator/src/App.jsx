@@ -78,6 +78,7 @@ useEffect(()=>{
           }`}
           // Disable button when password is copied
            disabled={copied}>
+           {/* //Using ternary operator it checks and sgows when there is copied then shows the Copied on a button otherwise show Copy */}
            {copied ? 'Copied' :'Copy'}
       </button>
       
