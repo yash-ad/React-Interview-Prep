@@ -9,6 +9,9 @@ function App() {
   const [numberAllowed,setNumberAllowed] = useState(false);
   const [charAllowed,setCharAllowed] = useState(false);
   const [password,setPassword] = useState("");
+  //Lets create a feature of toggle for the copy button,Here the purpose is whenever the user clicks on a button the 'copy' button should toggled into the 'copied' button:-
+  // State to track if password has been copied
+  const[copied,setCopied] = useState(false);
 
 
   //useRef hook:-
@@ -34,7 +37,8 @@ function App() {
 
 //How to read the 'pass' value by using setState function here is the setPassWord():-
 setPassword(pass);
-  
+// Reset copied state whenever password changes.
+setCopied(false);
   },[length,numberAllowed,charAllowed,setPassword])
 
 
@@ -42,10 +46,12 @@ setPassword(pass);
   const copyPasswordToClipboard = useCallback(()=>{
 passwordRef.current?.select();
 window.navigator.clipboard.writeText(password)
+setCopied(true); // Set copied state to true when password is copied
   },[password])
 
 
 //useEffect hook:-
+// including passwordGenerator in the dependency array ensures that React re-runs the effect whenever the function is recreated, thus ensuring that the effect always has the correct reference to the latest version of passwordGenerator.
 useEffect(()=>{
   passwordGenerator();
   },[length,numberAllowed,charAllowed,passwordGenerator])
@@ -66,8 +72,15 @@ useEffect(()=>{
       />
       <button
            onClick={copyPasswordToClipboard}
-      className='outline-none bg-blue-800 text-white px-3 py-0.5 shrink-0 hover:bg-blue-600'
-      >copy</button>
+           className={`outline-none bg-blue-800 text-white px-3 py-0.5 shrink-0 hover:bg-blue-600 
+          ${
+            copied ? 'cursor-not-allowed' : ''
+          }`}
+          // Disable button when password is copied
+           disabled={copied}>
+           {/* //Using ternary operator it checks and sgows when there is copied then shows the Copied on a button otherwise show Copy */}
+           {copied ? 'Copied' :'Copy'}
+      </button>
       
   </div>
   <div className='flex text-sm gap-x-2'>
