@@ -24,7 +24,21 @@ setTodos((prev)=> prev.map((prevTodo)=> prevTodo.id === id ? todo : prevTodo))
 }
 
 
-//3.
+//3.Delete TODO functionality:-
+//here we want to delete the specific id using filter method , becuase we know that the Filter Method checks the condition with a boolean value either it true or false
+// Here to acheive the goal is to find the id and it is not matching  to the given id which has passed from the deleteTodos method
+const deleteTodo = (id)=>{
+setTodos((prev)=> prev.filter((prevTodo)=> prevTodo.id !==  id))
+}
+
+
+//4.toggle Checkbox TODO functionality:-
+//Here in this functionality we want to acheive is to check the item  , to the task is completed, the goal is to acheive the matching and id using map to loop on an existing values or for previous values , if there would be match it edits into the UI and add a new todo
+//with using not operator to opposites the value if there it is false and the overwrite convert them into true and if there is True then convert them into the false.tahst itg j
+const toggleComplete = (id)=>{
+setTodos((prev)=> prev.map((prevTodo)=> prevTodo.id === id)? {...prevTodo,completed:!prevTodo.completed} :prevTodo)
+}
+
 
   return (
     <TodoProvider value={{todos,addTodo,updateTodo,deleteTodo,toggleComplete}}>
