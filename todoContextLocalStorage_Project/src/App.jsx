@@ -15,10 +15,11 @@ function App() {
   //1.Add TODO functionality:-
   //And how to modify a state variable By using setState function and the function comes with the second parameter of an array.
 //Here we have accessed a callback function into the setState function because we want a previous values whenever we add a new todos, if we directly add a new todo into the setState function it just creates a new todo and updates the UI with a new values , we are unable to access a previous todos.
-//here we are also creating dynamic values using `Date.now()` to generate specific values.
+//here we are also creating dynamic values using `Date.now()` to generate specific id.
   const addTodo = (todo)=>{
 setTodos((prev)=> [{id:Date.now(),...todo},...prev])
-  };
+console.log(setTodos);
+};
 
 //2.update TODO functionality:-
 //We know that  'todos' is an array and array must be loop to find an individual value, and here we are using map.

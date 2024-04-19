@@ -1,31 +1,34 @@
-import  { useState } from 'react'
-import {useTodo} from '../contexts/Index'
+import React, { useState } from "react";
+import {useTodo} from '../contexts/Index';
 
 function TodoForm() {
     
 
-//First of all lets define the state to an individual todo which we have created into the App.jsx
-const [todo,setTodo] = useState('');
+    const[todo,setTodo] = useState("");
 
-//Extract the values from useTodo () hook which comes from context.
-const{addTodo} = useTodo();
+    const{addTodo}  = useTodo();
 
-const add = (event)=>{
-event.preventDefault();
-if(!todo) return
-addTodo({todo,completed:false})
-setTodo("")
+    const add = (event)=>{
+event.preventDefault()
+
+if(!todo){
+    return
+}
+else{
+    addTodo({todo,completed:false});
 }
 
+setTodo('')
+    }
+
     return (
-        <form onSubmit={add} className="flex">
+        <form onSubmit={add}  className="flex">
             <input
                 type="text"
                 placeholder="Write Todo..."
                 className="w-full border border-black/10 rounded-l-lg px-3 outline-none duration-150 bg-white/20 py-1.5"
-            //Wiring
             value={todo}
-onChange={(event)=> setTodo(event.target.value)}
+onChange={(event)=>  setTodo(event.target.value)}
             />
             <button type="submit" className="rounded-r-lg px-3 py-1 bg-green-600 text-white shrink-0">
                 Add
@@ -35,4 +38,92 @@ onChange={(event)=> setTodo(event.target.value)}
 }
 
 export default TodoForm;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import  { useState } from 'react'
+// import {useTodo} from '../contexts/Index'
+
+// function TodoForm() {
+    
+
+// //First of all lets define the state to an individual todo which we have created into the App.jsx
+// const [todo,setTodo] = useState('');
+
+// //Extract the values from useTodo () hook which comes from context.
+// const{addTodo} = useTodo();
+
+// const add = (event)=>{
+// event.preventDefault();
+// if(!todo){
+//     return;
+// } 
+// else{
+//     addTodo({todo,completed:false})
+// }
+// setTodo("")
+// }
+
+//     return (
+//         <form onSubmit={add} className="flex">
+//             <input
+//                 type="text"
+//                 placeholder="Write Todo..."
+//                 className="w-full border border-black/10 rounded-l-lg px-3 outline-none duration-150 bg-white/20 py-1.5"
+//             //Wiring
+//             value={todo}
+// onChange={(event)=> setTodo(event.target.value)}
+//             />
+//             <button type="submit" className="rounded-r-lg px-3 py-1 bg-green-600 text-white shrink-0">
+//                 Add
+//             </button>
+//         </form>
+//     );
+// }
+
+// export default TodoForm;
 
