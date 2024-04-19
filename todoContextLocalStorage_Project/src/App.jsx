@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {TodoProvider} from './contexts/Index'
 
 function App() {
@@ -42,6 +42,35 @@ setTodos((prev)=> prev.map((prevTodo)=> prevTodo.id === id)? {...prevTodo,comple
 }
 
 
+//Lets create an useEffect Hook ():-
+//We know that useEffect hook it accepts two arguments , the first is callback function and the second is dependency array:-
+//Here the purpose of useEffect hook is when the component renders ,the component should show the todo datas.
+//In the useEffect hook the callback function will be called after the component renders.
+//Whenver the component renders and as soon as the render cycle is finished,It will quickly call the useEffect's callBack function and it re-renders the component.
+//And here is an empty dependency array with init that means it will render only just once initially.
+
+//localStorage.getItem("key");
+useEffect(()=>{
+const todos = JSON.parse(localStorage.getItem("todos"));
+//Lets check the condition if the "todos" exist or not
+//True && True -> True
+//True && false -> false
+//false && True -> false
+//false && false -> false
+if(todos && todos.length < 0 ){
+  setTodos(todos)
+}
+},[])
+
+//localStorage.setItem("key","value");
+//Here we using an another useEffect hook  for same reason it will render the component and as soon as the render cycle is finished , it will quickly call the useEffects callBack function and it will re-render the component
+//When the dependency array contains a condition,the callback function will be executed one time during the initial render of the component and also re-renders if there is a change in the condition.
+// Here we are using state variable 'todos' as a condition in the dependency array.
+//Why because the callBack function will be executed during the intitial render of the component and it will re-render on the condition basis of a change in the dependency array.
+
+useEffect(()=>{
+localStorage.setItem("todos",JSON.stringify(todos))
+},[todos])
   return (
     //Values are extracted  and destrcutured from an object , which came from a context
     <TodoProvider value={{todos,addTodo,updateTodo,deleteTodo,toggleComplete}}>
@@ -56,7 +85,7 @@ setTodos((prev)=> prev.map((prevTodo)=> prevTodo.id === id)? {...prevTodo,comple
                     </div>
                 </div>
             </div>
-            </>
+            </TodoProvider>
   )
 }
 
