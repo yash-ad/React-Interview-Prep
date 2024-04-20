@@ -91,7 +91,8 @@ localStorage.setItem("todos",JSON.stringify(todos))
                         <TodoForm/>
                     </div>
                     <div className="flex flex-wrap gap-y-3">
-                        {/*Loop and Add TodoItem here */}
+                        {/*Creating a Loop mapping on to the todos.Item , because for each item is a single individual todo and Add TodoItem here */}
+
                     </div>
                 </div>
             </div>

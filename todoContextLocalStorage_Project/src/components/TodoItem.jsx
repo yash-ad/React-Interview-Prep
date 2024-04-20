@@ -1,5 +1,36 @@
-function TodoItem({ todo }) {
+import { useState } from 'react';
+import {useTodo} from '../contexts/TodoContext'
+
+
+
+
+//here todo as a prop it contains from a context and its an object thats why it is destructured and it is a single todo
+function TodoItem({todo}) {
     
+//Extracted values from useTodo () hook which comes from context:-
+const{toggleComplete,updateTodo,deleteTodo} = useTodo();
+
+//Created the state for editable todo:-
+const [isTodoEditable,setIsTodoEditable] = useState(false);
+
+//Created the state for Todo message :-
+//Here todo  as a prop which is an object so todo.todo , here after the dot notation the 'todo' is a message.
+const [todoMsg,setTodoMsg] = useState(todo.todo);
+
+
+
+///.Lets come to the functionalities which we are creating right overhere:-
+
+//1.for editing and updating the todo message:-
+const editTodo = ()=>{
+    updateTodo(todo.id,{...todo,todo:todoMsg});
+    setIsTodoEditable(false)
+}
+
+//2.For toggling the todos message and to show that the completed task.
+const toggleCompleted = ()=>{
+toggleComplete(todo.id)
+}
 
     return (
         <div
