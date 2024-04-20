@@ -1,5 +1,6 @@
 import {createContext, useContext} from "react"
 
+//Create context
 export const TodoContext = createContext({
     todos: [
         {
@@ -15,6 +16,7 @@ export const TodoContext = createContext({
 })
 
 
+//Custom hook
 export const useTodo = () => {
     return useContext(TodoContext)
 }
