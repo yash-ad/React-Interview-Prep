@@ -14,14 +14,15 @@ const{toggleComplete,updateTodo,deleteTodo} = useTodo();
 const [isTodoEditable,setIsTodoEditable] = useState(false);
 
 //Created the state for Todo message :-
-//Here todo  as a prop which is an object so todo.todo , here after the dot notation the 'todo' is a message.
+//Here todo  as a prop which is an object so todo.todo , here after the dot notation the 'todo' is a message which comes from a context.
 const [todoMsg,setTodoMsg] = useState(todo.todo);
 
 
 
 ///.Lets come to the functionalities which we are creating right overhere:-
 
-//1.for editing and updating the todo message:-
+//1.for editing and updating the todo message.
+//Here each individual todo has an id ,and here todo is an object that we are  passing into the curl braces and spreading the existing values
 const editTodo = ()=>{
     updateTodo(todo.id,{...todo,todo:todoMsg});
     setIsTodoEditable(false)
