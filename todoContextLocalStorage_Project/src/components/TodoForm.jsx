@@ -8,7 +8,7 @@ function TodoForm() {
 //First of all lets define the state to an individual todo which we have created into the App.jsx
 const [todo,setTodo] = useState('');
 
-//Extract the values from useTodo () hook which comes from context.
+//Extracted the value from useTodo () hook which comes from context.
 const{addTodo} = useTodo();
 
 const add = (event)=>{
