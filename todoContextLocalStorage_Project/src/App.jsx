@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import {TodoProvider} from './contexts/Index'
 import TodoForm from './components/TodoForm';
+import TodoItem from './components/TodoItem';
 
 function App() {
 
@@ -92,7 +93,13 @@ localStorage.setItem("todos",JSON.stringify(todos))
                     </div>
                     <div className="flex flex-wrap gap-y-3">
                         {/*Creating a Loop mapping on to the todos.Item , because for each item is a single individual todo and Add TodoItem here */}
-
+{
+  todos.map((todo)=>(
+  <div key={todo.id} className='w-full'>
+  <TodoItem todo={todo}/>
+  </div>  
+  ))
+}
                     </div>
                 </div>
             </div>
