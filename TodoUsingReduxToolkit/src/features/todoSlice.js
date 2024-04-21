@@ -41,5 +41,9 @@ state.todos = state.todos.map((todo)=> todo.id === action.payload.id ?{...todo,t
 })
 
 
-//Lets export individually
-export const {addTodo,removeTodo,updateTodo}= todoSlice.actions
+//Lets export individually actions.
+export const {addTodo,removeTodo,updateTodo}= todoSlice.actions;
+
+
+//Lets export individually reducers.
+export default todoSlice.reducer;
