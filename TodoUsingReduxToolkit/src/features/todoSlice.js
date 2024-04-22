@@ -1,7 +1,7 @@
 import {createSlice,nanoid} from '@reduxjs/toolkit';
 
 
-//Lets create first an intial state for store:-
+//1.Lets create first an intial state for store:-
 //Its an object.
 //By default state
 const initialState  = {
@@ -9,9 +9,9 @@ const initialState  = {
 }
 
 
-//Lets create a slice :-
+//2.Lets create a slice :-
 export const todoSlice = createSlice({
- //Give it a slice name property for 'todo'.
+ //3.Give it a slice name property for 'todo'.
 name:todo,
 //Every slice has an initial state.
 initialState,
@@ -21,7 +21,7 @@ initialState,
 reducers:{
 //Lets create an addTodo functionality for adding the todo list with property and function 'key:function'
 addTodo:(state,action)=>{
-const todo = {id:nanoid,
+const todo = {id:nanoid(),
     text:action.payload,
 }
 state.todos.push(todo)
@@ -33,6 +33,7 @@ removeTodo:(state,action)=>{
     //lets apply filter for filtering  the id that item we want to remove
     state.todos = state.todos.filter((todo)=> todo.id !== action.payload)
 },
+//Lets create a updateTodo functionality for updating the todo list with property and function 'key:function'
 updateTodo:(state,action)=>{
 //values overwrite for the text with the matched id.
 state.todos = state.todos.map((todo)=> todo.id === action.payload.id ?{...todo,text:todo.text} : todo)
