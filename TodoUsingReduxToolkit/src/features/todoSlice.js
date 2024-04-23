@@ -1,53 +1,39 @@
-import {createSlice,nanoid} from '@reduxjs/toolkit';
 
+
+
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 //1.Lets create first an intial state for store:-
 //Its an object.
 //By default state
-const initialState  = {
-    //Property
-    //We know that 'initialstate' todoss is an array:-\
-    //An array of objects:-
-    todos:[{id:1,text:"Hello React and Redux"}]
+
+const initialState = {
+    // todos: [{ id: 1, text: "Hello React and Redux" }]
+    todos: []
 }
 
-
-//2.Lets create a slice :-
 export const todoSlice = createSlice({
- //3.Give it a slice name property for 'todo'.
-name:todo,
-//Every slice has an initial state.
-initialState,
-//reducers for functionality
-//Within a reducers there is a property and functions.
-//State changes are handled by reducers which takes two arguments the current state and action and return a new state
-reducers:{
-//Lets create an addTodo functionality for adding the todo list with property and function 'key:function'
-addTodo:(state,action)=>{
-const todo = {id:nanoid(),
-    text:action.payload,
-}
-state.todos.push(todo)
-}
-,
-//Lets create a removeTodo functionality for removing the todo list with property and function 'key:function'
-removeTodo:(state,action)=>{
-    //values overwrite
-    //lets apply filter for filtering  the id that item we want to remove
-    state.todos = state.todos.filter((todo)=> todo.id !== action.payload)
-},
-//Lets create an updateTodo functionality for updating the todo list with property and function 'key:function'
-updateTodo:(state,action)=>{
-//values overwrite for the text with the matched id.
-state.todos = state.todos.map((todo)=> todo.id === action.payload.id ?{...todo,text:todo.text} : todo)
-}
-}
-})
+    name: 'todo', 
+    initialState,
+    reducers: {
+        addTodo: (state, action) => {
+            const todo = {
+                id: nanoid(),
+                text: action.payload,
+            };
+            state.todos.push(todo);
+        },
+        removeTodo: (state, action) => {
+            state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+        },
+        updateTodo: (state, action) => {
+            state.todos = state.todos.map((todo) =>
+                todo.id === action.payload.id ? { ...todo, text: action.payload.text } : todo
+            );
+        }
+    }
+});
 
+export const { addTodo, removeTodo, updateTodo } = todoSlice.actions;
 
-//Lets export individually actions.
-export const {addTodo,removeTodo,updateTodo}= todoSlice.actions;
-
-
-//Lets export individually reducer.
 export default todoSlice.reducer;
