@@ -5,6 +5,9 @@ import {createSlice,nanoid} from '@reduxjs/toolkit';
 //Its an object.
 //By default state
 const initialState  = {
+    //Property
+    //We know that 'initialstate' todoss is an array:-\
+    //An array of objects:-
     todos:[{id:1,text:"Hello React and Redux"}]
 }
 
@@ -33,7 +36,7 @@ removeTodo:(state,action)=>{
     //lets apply filter for filtering  the id that item we want to remove
     state.todos = state.todos.filter((todo)=> todo.id !== action.payload)
 },
-//Lets create a updateTodo functionality for updating the todo list with property and function 'key:function'
+//Lets create an updateTodo functionality for updating the todo list with property and function 'key:function'
 updateTodo:(state,action)=>{
 //values overwrite for the text with the matched id.
 state.todos = state.todos.map((todo)=> todo.id === action.payload.id ?{...todo,text:todo.text} : todo)
@@ -46,5 +49,5 @@ state.todos = state.todos.map((todo)=> todo.id === action.payload.id ?{...todo,t
 export const {addTodo,removeTodo,updateTodo}= todoSlice.actions;
 
 
-//Lets export individually reducers.
+//Lets export individually reducer.
 export default todoSlice.reducer;
