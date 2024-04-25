@@ -38,7 +38,7 @@ const handleUpdate = ()=>{
                     >
 
 {/* 3.Conditionally render either an input field or the todo text based on the edit state. */}
-{/* //Here it checks if the editId is equal eqauls to the todo.id , which means that the user clicks on a button of an edit the editId is macthing to the individuals todo.id then it shows the input fi;ed and update buttpn to update the behavior */}
+{/* //Here it checks if the editId is equal eqauls to the todo.id , which means that the user clicks on a button of an edit the editId is matching to the individuals todo.id then it shows the input field and update button to update the behavior */}
 
 {
  editId === todo.id ? 
@@ -58,9 +58,10 @@ const handleUpdate = ()=>{
         Update Todo
     </button>
 </>
-) : (
+) :
+ (
 <>
-                        
+                  
 <div className="text-white">{todo.text}</div>
 <button
     className="flex flex-row-reverse text-white bg-blue-600 border-0 py-1 px-4 focus:outline-none hover:bg-blue-800 rounded text-mg ml-auto space-x-10"
@@ -71,7 +72,8 @@ const handleUpdate = ()=>{
                                     </svg>
                                 </button>
                         </>
-                )}
+)
+}
                         <button
                             onClick={() => dispatch(removeTodo(todo.id))}
                             className="text-white bg-red-500 border-0 py-1 px-4 focus:outline-none hover:bg-red-600 rounded text-md"
